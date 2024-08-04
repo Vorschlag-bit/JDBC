@@ -33,11 +33,16 @@ public class Application1 {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
-
             /* 설명. 생성과 달리 역순으로 각 스트림을 닫는다. */
-            close(rs);
-            close(stmt);
-            close(con);
+            if (rs != null) {
+                close(rs);
+            }
+            if (stmt != null) {
+                close(stmt);
+            }
+            if (con != null) {
+                close(con);
+            }
         }
     }
 }
